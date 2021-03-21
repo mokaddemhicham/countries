@@ -62,6 +62,7 @@ nav ul li{
 
 .row{
     margin: 10px 0;
+    text-align: center
 }
 
 .row .copyright{
@@ -75,6 +76,9 @@ nav ul li{
     
     color: #c8dd0c;
     transition: all .3s ease;
+}
+.sm ul{
+    padding: 0 !important;
 }
 .sm ul li{
     display: inline-block;
@@ -131,5 +135,28 @@ nav ul li{
     }
     .row .copyright{
         font-size: 16px;
+    }
+}
+@media  (max-width: 372px){
+    .sm ul li{
+        margin: 0 5px;
+    }
+    .sm ul li a i{
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        border-radius: 50%;
+        line-height: 30px;
+        text-align: center;
+        transition: all .3s ease;
+    }
+    .row .copyright{
+        color: #fff;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    .row .copyright a{
+        display: block;
     }
 }
