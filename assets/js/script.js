@@ -25,7 +25,13 @@ btnSearch.addEventListener("click",()=>{
             var info = JSON.parse(this.responseText);
             var output = '';
             
+
+
+
+            
             for(let i in info){
+                // Auto complete suggestions
+
 
                     output += `<button class="uk-modal-close-default" type="button" uk-close></button>
 
@@ -74,3 +80,77 @@ btnSearch.addEventListener("click",()=>{
     // Send Request
     xhr.send();
 });
+
+// // Auto complete suggestions
+
+
+
+let country = document.getElementById("country");
+
+let suggBox = document.getElementById("suggestions");
+
+var newArr = [];
+
+let xhttpr = new XMLHttpRequest();
+
+
+xhttpr.open("GET", "https://restcountries.eu/rest/v2/", true);
+
+xhttpr.onreadystatechange = function(){
+    if(this.readyState === 4 && this.status === 200){
+        let countriesName = JSON.parse(this.responseText);
+        
+        for(let i in countriesName){
+            newArr.push(countriesName[i].name);
+        }
+    }
+}
+xhttpr.send();
+
+
+
+
+
+country.onkeyup = function(e){
+	let userData = e.target.value;
+	let emptyArray = [];
+	if(userData){
+		// Filtering DATA 
+			emptyArray = newArr.filter((data)=>{
+				return data.toLowerCase().startsWith(userData.toLowerCase());
+			});
+		
+		emptyArray = emptyArray.map((data)=>{
+			return data = '<li>' + data + '</li>';
+		});
+
+		showSuggestions(emptyArray);
+        //country.classList.add("active");
+		let allList = suggBox.querySelectorAll("li");
+		for(var i = 0; i < allList.length; i++){
+			allList[i].setAttribute("onclick","select(this)");
+		}
+		
+	}
+}
+
+// Show Suggestions in HTML Document
+
+function showSuggestions(arr){
+	let listData;
+	let userValue;
+	if(!arr.length){
+		userValue = country.value;
+		listData = '<li>' + userValue + '</li>';
+	}else{
+		listData = arr.join(' ');
+	}
+	suggBox.innerHTML = listData;
+}
+
+// select element
+
+function select(element){
+	let selectData = element.textContent;
+	country.value = selectData;
+}
