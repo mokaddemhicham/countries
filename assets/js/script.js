@@ -26,12 +26,17 @@ btnSearch.addEventListener("click",()=>{
             var output = '';
             
 
-
-
             
             for(let i in info){
                 // Auto complete suggestions
-
+                if(info[i].name.toLowerCase() === "israel"){
+                    info[i].name = "<del>Israel</del> , Palestine";
+                    info[i].flag = "https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg";
+                    info[i].capital = "Ramallah";
+                    info[i].alpha3Code = "PSE";
+                    info[i].languages[0].name = "Arabic";
+                    info[i].languages[0].nativeName = "العربية";
+                }
 
                     output += `<button class="uk-modal-close-default" type="button" uk-close></button>
 
@@ -130,6 +135,7 @@ country.onkeyup = function(e){
 		for(var i = 0; i < allList.length; i++){
 			allList[i].setAttribute("onclick","select(this)");
 		}
+        
 		
 	}
 }
