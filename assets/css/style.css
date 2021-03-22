@@ -26,6 +26,7 @@ form{
     flex-direction: column;
     /* border-radius: 10px; */
     margin-bottom: 100px;
+    position: relative;
 }
 form .uk-input{
     width: 450px ;
@@ -45,8 +46,13 @@ form .uk-button-primary{
     /* margin-top: 100px; */
 }
 #suggestions{
+    position: absolute;
+    top: 40px;
+    left: 0;
     padding: 0 !important;
     margin: 0 !important;
+    background-color: #fff;
+    width: 100%;
     /* border-radius: 10px; */
     /* pointer-events: none !important; */
     max-height: 265px !important; 
@@ -89,7 +95,10 @@ nav ul li{
     display: inline-block;
     margin: 0 10px;
 }
-
+footer{
+    position: absolute;
+    bottom: 20px;
+}
 .row{
     margin: 10px 0;
     text-align: center
@@ -159,9 +168,6 @@ nav ul li{
     }
     form .uk-input{
         width: 90% ;
-    }
-    form .uk-button-primary{
-        width: 90%;
     }
     .row .copyright{
         font-size: 16px;
